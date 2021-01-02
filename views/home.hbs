@@ -1,0 +1,53 @@
+{{> head}}
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0px 40px;">
+    <h3 class="h3">{{userID}}'s Account</h3>
+    <div>
+        <a href="/cart" style="padding-right: 10px;">View Cart</a>
+        <a href="/logout" style="padding-right: 10px;">Logout</a>
+    </div>
+</div>
+
+
+<div class="container pb-4">
+    <div class="row">
+        {{#each allProducts}}
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <div class="product-image">
+                        <a href="#">
+                            <img class="pic-1" src="{{this.product_img1}}">
+                            <img class="pic-2" src="{{this.product_img2}}">
+                        </a>
+                        <ul class="social">
+                            <li><a data-id="{{this.product_id}}" data-tip="Add to Cart" onclick="addToCart({{this.product_id}})"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">{{this.product_name}}</a></h3>
+                        <div class="price">Rs-/ {{this.product_price}} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<script>
+    function addToCart(productID) {
+        $.ajax({
+            url: '/addtocart',
+            data: {productID: productID},
+            method: 'POST',
+            success: (response) => {
+                console.log(response)
+                if(response === 'OK') {
+                    alert('Product Added to Cart')
+                }
+                else {
+                    alert('Product isalready in Your cart')
+                }
+            }
+        })
+    }
+</script>
