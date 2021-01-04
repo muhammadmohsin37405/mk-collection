@@ -4,13 +4,13 @@ var expressSession = require('express-session')
 var hbs = require('hbs')
 var bodyParser = require('body-parser')
 var app = express()
+var fileUpload = require('express-fileupload');
 var loginRoute = require('./routes/loginRoute')
 var signupRoute = require('./routes/signupRoutes')
 var homeRoute = require('./routes/homeRoute')
 var adminRoute = require('./routes/adminRoute')
 var logoutRoute = require('./routes/logoutRoute')
 var cartRoute = require('./routes/cartRoute')
-
 var dbQueries = require('./database/dbQueries')
 
 // Settings
@@ -22,6 +22,7 @@ app.use((req, res, next) => {
     res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0')
     next()
 })
+app.use(fileUpload());
 app.use('/login', loginRoute)
 app.use('/signup', signupRoute)
 app.use('/home', homeRoute)

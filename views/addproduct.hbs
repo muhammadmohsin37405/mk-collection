@@ -1,7 +1,7 @@
-<form action="/add_product" method="POST">
+<form action="/admin/addproduct" method="POST" enctype="multipart/form-data">
     <input type="text" name="product_name" placeholder="Product Name" required>
     <input type="number" name="product_price" placeholder="Product Price" required>
-    <input type="text" name="productimage_1" placeholder="image 1" required>
-    <input type="text" name="productimage_2" placeholder="image 2" required>
+    <input type="file" name="productimage_1" placeholder="image 1" required>
+    <input type="file" name="productimage_2" placeholder="image 2" required>
     <input type="submit" value="Submit">
 </form>
