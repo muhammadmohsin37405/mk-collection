@@ -10,7 +10,7 @@ router.post('/deleteproduct', async (req, res) => {
 
     await dbQueries.deleteProduct(productName)
 
-    res.redirect('/admin/deleteproduct')
+    res.redirect('/deleteproduct')
 })
 
 router.get('/deleteproduct', (req, res) => {
